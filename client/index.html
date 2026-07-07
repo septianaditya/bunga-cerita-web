@@ -1,0 +1,1304 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bunga Cerita — Florist Premium Dipandu AI</title>
+  <meta name="description" content="Homepage Bunga Cerita — florist premium dengan Asisten Bunga Cerita." />
+  <link rel="icon" href="icon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Jost:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --background: #fbf7ed;
+      --foreground: #3e4a37;
+      --card: #fffdf7;
+      --primary: #6c8b6e;
+      --primary-foreground: #fffaf0;
+      --secondary: #edf4e7;
+      --secondary-foreground: #4f654d;
+      --muted: #f4efe4;
+      --muted-foreground: #76836f;
+      --accent: #e9b9b1;
+      --border: #e8dfcf;
+      --gold: #d9b769;
+      --gold-foreground: #5b4820;
+      --danger: #c94b4b;
+      --radius: 22px;
+      --shadow: 0 20px 60px rgba(62, 74, 55, .10);
+      --serif: 'Fraunces', Georgia, serif;
+      --sans: 'Jost', system-ui, -apple-system, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--foreground);
+      font-family: var(--sans);
+      line-height: 1.5
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    img {
+      max-width: 100%;
+      display: block
+    }
+
+    button,
+    input {
+      font: inherit
+    }
+
+    button {
+      cursor: pointer;
+      border: 0
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 20px
+    }
+
+    .serif {
+      font-family: var(--serif)
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 12px;
+      font-weight: 600
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border-radius: 999px;
+      padding: 15px 26px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: .25s
+    }
+
+    .btn:hover {
+      transform: translateY(-2px)
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--primary-foreground);
+      box-shadow: 0 14px 30px rgba(108, 139, 110, .22)
+    }
+
+    .btn-dark {
+      background: var(--foreground);
+      color: var(--background)
+    }
+
+    .btn-light {
+      background: var(--card);
+      border: 1px solid var(--border)
+    }
+
+    header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      transition: .3s
+    }
+
+    .header-scrolled {
+      background: rgba(251, 247, 237, .84);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(232, 223, 207, .75)
+    }
+
+    .header-inner {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px
+    }
+
+    .brand-icon,
+    .circle-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: white;
+      display: grid;
+      place-items: center
+    }
+
+    .brand span {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 500
+    }
+
+    .nav {
+      display: flex;
+      gap: 34px;
+      color: var(--muted-foreground);
+      font-size: 14px
+    }
+
+    .nav a:hover {
+      color: var(--foreground)
+    }
+
+    .desktop-actions {
+      display: flex
+    }
+
+    .menu-btn {
+      display: none;
+      background: transparent;
+      color: var(--foreground);
+      font-size: 26px
+    }
+
+    .mobile-menu {
+      display: none;
+      border-top: 1px solid var(--border);
+      background: rgba(251, 247, 237, .96);
+      backdrop-filter: blur(18px)
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 13px 12px;
+      border-radius: 14px
+    }
+
+    .mobile-menu a:hover {
+      background: var(--muted)
+    }
+
+    .hero {
+      padding-top: 118px;
+      overflow: hidden
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 56px;
+      padding-bottom: 92px
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(48px, 7vw, 82px);
+      line-height: 1.04;
+      letter-spacing: -.04em;
+      margin: 22px 0 0
+    }
+
+    .hero h1 em {
+      color: var(--primary);
+      font-style: italic
+    }
+
+    .hero p {
+      max-width: 480px;
+      color: var(--muted-foreground);
+      font-size: 18px;
+      margin: 24px 0 0
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 34px;
+      flex-wrap: wrap
+    }
+
+    .rating {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      margin-top: 36px;
+      color: var(--muted-foreground);
+      font-size: 14px
+    }
+
+    .stars {
+      color: var(--gold);
+      letter-spacing: 2px
+    }
+
+    .hero-photo {
+      position: relative
+    }
+
+    .hero-img {
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: 40px;
+      width: 100%;
+      box-shadow: var(--shadow)
+    }
+
+    .floating-card {
+      position: absolute;
+      left: -24px;
+      bottom: -22px;
+      width: 250px;
+      background: rgba(255, 253, 247, .92);
+      border: 1px solid rgba(232, 223, 207, .85);
+      backdrop-filter: blur(16px);
+      border-radius: 24px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+      animation: float 6s ease-in-out infinite
+    }
+
+    .floating-card p {
+      font-size: 13px;
+      margin: 10px 0 0;
+      color: var(--muted-foreground)
+    }
+
+    .badge {
+      position: absolute;
+      right: 18px;
+      top: -8px;
+      background: rgba(255, 253, 247, .92);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 9px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      box-shadow: 0 12px 30px rgba(62, 74, 55, .08)
+    }
+
+    @keyframes float {
+      50% {
+        transform: translateY(-12px)
+      }
+    }
+
+    .trust {
+      border-block: 1px solid rgba(232, 223, 207, .85);
+      background: rgba(237, 244, 231, .62)
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+      padding: 38px 20px
+    }
+
+    .trust-item {
+      display: flex;
+      gap: 14px;
+      align-items: center
+    }
+
+    .trust-title {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 1.2
+    }
+
+    .trust-sub {
+      font-size: 12px;
+      color: var(--muted-foreground);
+      margin-top: 2px
+    }
+
+    section {
+      scroll-margin-top: 86px
+    }
+
+    .section {
+      padding: 90px 0
+    }
+
+    .section-soft {
+      background: rgba(237, 244, 231, .45)
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 28px;
+      margin-bottom: 46px
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700
+    }
+
+    .section h2 {
+      font-family: var(--serif);
+      font-size: clamp(34px, 4vw, 56px);
+      line-height: 1.08;
+      letter-spacing: -.03em;
+      margin: 10px 0 0
+    }
+
+    .section-head p {
+      max-width: 400px;
+      color: var(--muted-foreground)
+    }
+
+    .occasion-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px
+    }
+
+    .occasion-card {
+      position: relative;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      border-radius: 30px;
+      background: var(--muted)
+    }
+
+    .occasion-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: .7s
+    }
+
+    .occasion-card:hover img {
+      transform: scale(1.06)
+    }
+
+    .occasion-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(62, 74, 55, .75), rgba(62, 74, 55, .08), transparent)
+    }
+
+    .occasion-content {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 20px;
+      color: var(--background);
+      z-index: 1
+    }
+
+    .occasion-content small {
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      opacity: .82;
+      font-weight: 600
+    }
+
+    .occasion-content h3 {
+      font-family: var(--serif);
+      font-size: 22px;
+      line-height: 1.05;
+      margin: 5px 0
+    }
+
+    .occasion-content p {
+      font-size: 12px;
+      opacity: .8;
+      margin: 7px 0 0
+    }
+
+    .bouquet-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(232, 223, 207, .85);
+      border-radius: 30px;
+      overflow: hidden;
+      transition: .35s
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow)
+    }
+
+    .bouquet-img {
+      position: relative;
+      aspect-ratio: 1;
+      background: var(--secondary);
+      overflow: hidden
+    }
+
+    .bouquet-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: .7s
+    }
+
+    .card:hover .bouquet-img img {
+      transform: scale(1.06)
+    }
+
+    .tag-best {
+      position: absolute;
+      left: 14px;
+      top: 14px;
+      background: var(--gold);
+      color: var(--gold-foreground);
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700
+    }
+
+    .card-body {
+      padding: 22px
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px
+    }
+
+    .card h3 {
+      font-family: var(--serif);
+      font-size: 22px;
+      margin: 0
+    }
+
+    .name-en {
+      font-size: 12px;
+      color: var(--muted-foreground)
+    }
+
+    .price {
+      font-weight: 700;
+      font-size: 14px;
+      white-space: nowrap
+    }
+
+    .desc {
+      font-size: 14px;
+      color: var(--muted-foreground);
+      margin: 14px 0
+    }
+
+    .moods {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap
+    }
+
+    .moods span {
+      font-size: 12px;
+      background: var(--secondary);
+      padding: 5px 10px;
+      border-radius: 999px;
+      color: var(--secondary-foreground)
+    }
+
+    .card-actions {
+      border-top: 1px solid rgba(232, 223, 207, .75);
+      margin-top: 20px;
+      padding-top: 16px;
+      display: flex;
+      gap: 9px
+    }
+
+    .order-btn {
+      flex: 1;
+      border-radius: 999px;
+      background: var(--primary);
+      color: white;
+      padding: 11px 14px;
+      font-weight: 600
+    }
+
+    .spark-btn {
+      width: 42px;
+      border-radius: 999px;
+      background: white;
+      border: 1px solid var(--border);
+      color: var(--primary)
+    }
+
+    .ai-box {
+      border: 1px solid rgba(232, 223, 207, .85);
+      border-radius: 38px;
+      background: var(--card);
+      overflow: hidden
+    }
+
+    .ai-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 44px;
+      padding: 56px
+    }
+
+    .feature {
+      display: flex;
+      gap: 15px;
+      margin-top: 22px
+    }
+
+    .feature-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      background: rgba(108, 139, 110, .12);
+      color: var(--primary);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0
+    }
+
+    .prompt-panel {
+      align-self: center;
+      background: rgba(237, 244, 231, .55);
+      border-radius: 30px;
+      padding: 30px
+    }
+
+    .prompt-btn {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      text-align: left;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 17px 18px;
+      margin-top: 12px;
+      color: var(--foreground);
+      transition: .25s
+    }
+
+    .prompt-btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(108, 139, 110, .55)
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center
+    }
+
+    .story-photo {
+      position: relative
+    }
+
+    .story-photo img {
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 38px
+    }
+
+    .since {
+      position: absolute;
+      right: -18px;
+      top: -18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 16px 20px;
+      box-shadow: var(--shadow)
+    }
+
+    .since b {
+      font-family: var(--serif);
+      font-size: 28px;
+      color: var(--primary);
+      display: block
+    }
+
+    .story-text p {
+      color: var(--muted-foreground);
+      font-size: 17px
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      border-top: 1px solid var(--border);
+      margin-top: 34px;
+      padding-top: 28px
+    }
+
+    .stats b {
+      font-family: var(--serif);
+      font-size: 36px;
+      font-weight: 500
+    }
+
+    .stats span {
+      display: block;
+      color: var(--muted-foreground);
+      font-size: 12px
+    }
+
+    footer {
+      background: var(--foreground);
+      color: var(--background);
+      padding: 58px 0 28px
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3, 1fr);
+      gap: 34px
+    }
+
+    .footer-grid p,
+    .footer-grid a,
+    .copyright {
+      color: rgba(251, 247, 237, .68);
+      font-size: 14px
+    }
+
+    .footer-grid h4 {
+      margin: 0 0 14px
+    }
+
+    .footer-grid ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 11px
+    }
+
+    .footer-brand span {
+      font-family: var(--serif);
+      font-size: 22px
+    }
+
+    .copyright {
+      margin-top: 44px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(251, 247, 237, .18);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px
+    }
+
+    .launcher {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 60;
+      background: var(--primary);
+      color: white;
+      border-radius: 999px;
+      padding: 14px 20px;
+      box-shadow: 0 18px 40px rgba(108, 139, 110, .32);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      font-weight: 600;
+      transition: .25s
+    }
+
+    .launcher:hover {
+      transform: translateY(-2px)
+    }
+
+    .chat {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 70;
+      width: 400px;
+      max-width: calc(100vw - 24px);
+      height: min(600px, 70vh);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: 0 24px 80px rgba(62, 74, 55, .22);
+      display: none;
+      overflow: hidden;
+      flex-direction: column
+    }
+
+    .chat.open {
+      display: flex
+    }
+
+    .chat-header {
+      background: rgba(237, 244, 231, .65);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 18px
+    }
+
+    .chat-title {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .chat-title b {
+      font-size: 14px
+    }
+
+    .status {
+      font-size: 12px;
+      color: var(--muted-foreground)
+    }
+
+    .close {
+      background: transparent;
+      color: var(--muted-foreground);
+      font-size: 24px
+    }
+
+    .messages {
+      flex: 1;
+      overflow: auto;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px
+    }
+
+    .bubble {
+      max-width: 82%;
+      padding: 12px 15px;
+      border-radius: 19px;
+      font-size: 14px;
+      line-height: 1.45
+    }
+
+    .bot {
+      align-self: flex-start;
+      background: rgba(237, 244, 231, .7);
+      border-top-left-radius: 5px
+    }
+
+    .user {
+      align-self: flex-end;
+      background: var(--primary);
+      color: white;
+      border-top-right-radius: 5px
+    }
+
+    .starters {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-start
+    }
+
+    .starter {
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 12px;
+      color: var(--foreground)
+    }
+
+    .chat-form {
+      border-top: 1px solid var(--border);
+      padding: 12px
+    }
+
+    .input-wrap {
+      display: flex;
+      gap: 8px;
+      border: 1px solid var(--border);
+      background: var(--background);
+      border-radius: 18px;
+      padding: 8px
+    }
+
+    .input-wrap input {
+      flex: 1;
+      background: transparent;
+      border: 0;
+      outline: 0;
+      padding: 6px
+    }
+
+    .send {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: white
+    }
+
+    .note {
+      text-align: center;
+      font-size: 11px;
+      color: var(--muted-foreground);
+      margin: 8px 0 0
+    }
+
+    @media(max-width:900px) {
+
+      .nav,
+      .desktop-actions {
+        display: none
+      }
+
+      .menu-btn {
+        display: block
+      }
+
+      .mobile-menu.open {
+        display: block
+      }
+
+      .hero-grid,
+      .ai-grid,
+      .story-grid {
+        grid-template-columns: 1fr
+      }
+
+      .hero-grid {
+        padding-bottom: 64px
+      }
+
+      .hero-photo {
+        max-width: 560px
+      }
+
+      .floating-card {
+        left: 10px;
+        width: 230px
+      }
+
+      .trust-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .section-head {
+        display: block
+      }
+
+      .occasion-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .bouquet-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .story-photo {
+        order: 2
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .copyright {
+        flex-direction: column
+      }
+
+      .chat {
+        right: 12px;
+        bottom: 12px;
+        width: calc(100vw - 24px)
+      }
+    }
+
+    @media(max-width:560px) {
+      .container {
+        padding: 0 16px
+      }
+
+      .hero {
+        padding-top: 104px
+      }
+
+      .hero h1 {
+        font-size: 44px
+      }
+
+      .hero p {
+        font-size: 16px
+      }
+
+      .hero-actions {
+        flex-direction: column
+      }
+
+      .btn {
+        width: 100%
+      }
+
+      .rating {
+        align-items: flex-start;
+        gap: 12px;
+        flex-direction: column
+      }
+
+      .trust-grid {
+        grid-template-columns: 1fr
+      }
+
+      .occasion-grid,
+      .bouquet-grid {
+        grid-template-columns: 1fr
+      }
+
+      .ai-grid {
+        padding: 26px
+      }
+
+      .section {
+        padding: 70px 0
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr
+      }
+
+      .launcher {
+        right: 16px;
+        bottom: 16px
+      }
+
+      .chat {
+        height: 75vh
+      }
+
+      .badge {
+        right: 10px
+      }
+
+      .floating-card {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        margin: -46px 14px 0;
+        width: auto
+      }
+
+      .since {
+        right: 8px
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header id="header">
+    <div class="container header-inner">
+      <a href="#top" class="brand"><span class="brand-icon">✿</span><span>Bunga Cerita</span></a>
+      <nav class="nav"><a href="#koleksi">Buket</a><a href="#momen">Momen</a><a href="#asisten">Asisten AI</a><a
+          href="#cerita">Cerita Kami</a></nav>
+      <div class="desktop-actions"><button class="btn btn-dark open-assistant">✨ Tanya Asisten</button></div>
+      <button class="menu-btn" id="menuBtn" aria-label="Buka menu">☰</button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="container"><a href="#koleksi">Buket</a><a href="#momen">Momen</a><a href="#asisten">Asisten AI</a><a
+          href="#cerita">Cerita Kami</a><button class="btn btn-dark open-assistant"
+          style="width:100%;margin:10px 0 16px">✨ Tanya Asisten AI</button></div>
+    </div>
+  </header>
+
+  <main>
+    <section id="top" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="pill"
+            style="border:1px solid var(--border);background:rgba(255,253,247,.75);color:var(--muted-foreground)">✨
+            Florist premium dipandu AI</span>
+          <h1>Setiap tangkai punya <em>cerita</em>.</h1>
+          <p>Rangkaian bunga premium yang dirangkai dengan tangan di Bunga Cerita. Bingung memilih? Biarkan <b
+              style="color:var(--foreground)">Asisten Bunga Cerita</b> menemukan buket sempurna untuk momen dan orang
+            tersayang.</p>
+          <div class="hero-actions"><button class="btn btn-primary open-assistant">✨ Temukan buket dengan AI</button><a
+              class="btn btn-light" href="#koleksi">Lihat koleksi →</a></div>
+          <div class="rating">
+            <div class="stars">★★★★★</div>
+            <div><b style="color:var(--foreground)">4.9/5</b> dari 2.400+ pelanggan</div>
+          </div>
+        </div>
+        <div class="hero-photo"><img class="hero-img" src="images/hero.png"
+            alt="Wanita memegang buket mawar merah muda dan peony putih">
+          <div class="floating-card">
+            <div style="display:flex;gap:9px;align-items:center"><span class="circle-icon"
+                style="width:30px;height:30px">✨</span><b style="font-size:13px">Asisten Bunga Cerita</b></div>
+            <p>“Untuk ulang tahun ibu yang menyukai warna lembut, aku sarankan <b style="color:var(--foreground)">Salju
+                Damai</b>.”</p>
+          </div>
+          <div class="badge">Pengiriman hari yang sama</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust">
+      <div class="container trust-grid">
+        <div class="trust-item"><span class="circle-icon">🚚</span>
+          <div>
+            <div class="trust-title">Pengiriman Hari yang Sama</div>
+            <div class="trust-sub">Same-day delivery sebelum 14.00</div>
+          </div>
+        </div>
+        <div class="trust-item"><span class="circle-icon">✍️</span>
+          <div>
+            <div class="trust-title">Kartu Ucapan Gratis</div>
+            <div class="trust-sub">Handwritten note, selalu</div>
+          </div>
+        </div>
+        <div class="trust-item"><span class="circle-icon">🌿</span>
+          <div>
+            <div class="trust-title">Bunga Segar Pilihan</div>
+            <div class="trust-sub">Dirangkai tangan tiap pagi</div>
+          </div>
+        </div>
+        <div class="trust-item"><span class="circle-icon">✨</span>
+          <div>
+            <div class="trust-title">Dipandu Asisten AI</div>
+            <div class="trust-sub">Rekomendasi personal</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="momen" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Momen</div>
+            <h2>Bunga untuk setiap babak cerita</h2>
+          </div>
+          <p>Dari cinta pertama hingga perpisahan yang lembut — temukan rangkaian yang paling pas untuk momenmu.</p>
+        </div>
+        <div class="occasion-grid">
+          <a href="#koleksi" class="occasion-card"><img src="images/cat-love.png" alt="Cinta & Romansa">
+            <div class="occasion-content"><small>Love & Romance</small>
+              <h3>Cinta & Romansa</h3>
+              <p>Untuk ungkapan hati yang tak selalu mudah diucapkan.</p>
+            </div>
+          </a>
+          <a href="#koleksi" class="occasion-card"><img src="images/cat-celebrate.png" alt="Perayaan">
+            <div class="occasion-content"><small>Celebration</small>
+              <h3>Perayaan</h3>
+              <p>Rayakan momen bahagia dengan warna yang bercerita.</p>
+            </div>
+          </a>
+          <a href="#koleksi" class="occasion-card"><img src="images/cat-congrats.png" alt="Ucapan Selamat">
+            <div class="occasion-content"><small>Congratulations</small>
+              <h3>Ucapan Selamat</h3>
+              <p>Kirim doa terbaik untuk babak baru mereka.</p>
+            </div>
+          </a>
+          <a href="#koleksi" class="occasion-card"><img src="images/cat-sympathy.png" alt="Simpati">
+            <div class="occasion-content"><small>Sympathy</small>
+              <h3>Simpati</h3>
+              <p>Kehadiran lembut di saat kata-kata terasa berat.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="koleksi" class="section section-soft">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Koleksi</div>
+            <h2>Buket pilihan bulan ini</h2>
+          </div>
+          <p>Setiap rangkaian dibuat dengan tangan menggunakan bunga segar pilihan. Handcrafted, delivered fresh.</p>
+        </div>
+        <div class="bouquet-grid" id="bouquetGrid"></div>
+      </div>
+    </section>
+
+    <section id="asisten" class="section">
+      <div class="container">
+        <div class="ai-box">
+          <div class="ai-grid">
+            <div><span class="pill" style="background:var(--secondary);color:var(--secondary-foreground)">✨ Asisten
+                Bunga Cerita</span>
+              <h2>Florist pribadimu, kini didukung AI</h2>
+              <p style="color:var(--muted-foreground);font-size:18px;max-width:470px">Tidak perlu bingung memilih.
+                Ceritakan untuk siapa dan momen apa, lalu biarkan asisten kami merekomendasikan buket yang paling
+                berkesan.</p>
+              <div class="feature"><span class="feature-icon">♥</span>
+                <div><b>Paham emosi</b>
+                  <p style="margin:.2rem 0;color:var(--muted-foreground);font-size:14px">Ceritakan momen dan
+                    penerimanya, asisten memilih bunga yang tepat maknanya.</p>
+                </div>
+              </div>
+              <div class="feature"><span class="feature-icon">💬</span>
+                <div><b>Percakapan alami</b>
+                  <p style="margin:.2rem 0;color:var(--muted-foreground);font-size:14px">Bahasa Indonesia atau English —
+                    ngobrol santai layaknya dengan florist pribadi.</p>
+                </div>
+              </div>
+              <div class="feature"><span class="feature-icon">⏱</span>
+                <div><b>Rekomendasi instan</b>
+                  <p style="margin:.2rem 0;color:var(--muted-foreground);font-size:14px">Saran buket lengkap dengan
+                    harga, dalam hitungan detik.</p>
+                </div>
+              </div><button class="btn btn-primary open-assistant" style="margin-top:28px">✨ Mulai ngobrol dengan
+                asisten</button>
+            </div>
+            <div class="prompt-panel"><b style="color:var(--muted-foreground);font-size:14px">Coba tanyakan salah satu
+                ini:</b><button class="prompt-btn" data-prompt="Bunga untuk ibu yang suka warna lembut">Bunga untuk ibu
+                yang suka warna lembut <span>✨</span></button><button class="prompt-btn"
+                data-prompt="Buket romantis di bawah Rp500.000">Buket romantis di bawah Rp500.000
+                <span>✨</span></button><button class="prompt-btn"
+                data-prompt="Ucapan selamat untuk teman yang lulus">Ucapan selamat untuk teman yang lulus
+                <span>✨</span></button><button class="prompt-btn"
+                data-prompt="Sesuatu yang elegan untuk grand opening">Sesuatu yang elegan untuk grand opening
+                <span>✨</span></button></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cerita" class="section section-soft">
+      <div class="container story-grid">
+        <div class="story-photo"><img src="images/story-atelier.png"
+            alt="Florist merangkai bunga pastel di atas meja kayu">
+          <div class="since"><b>Sejak 2018</b><span style="font-size:12px;color:var(--muted-foreground)">merangkai
+              cerita</span></div>
+        </div>
+        <div class="story-text">
+          <div class="eyebrow">Cerita Kami</div>
+          <h2>Bunga bukan sekadar hadiah, tapi bahasa hati</h2>
+          <p>Bunga Cerita lahir dari keyakinan sederhana: setiap perasaan pantas dirayakan dengan indah. Kami memadukan
+            seni merangkai bunga khas atelier dengan teknologi AI, agar kamu selalu menemukan cara yang pas untuk
+            berkata “aku memikirkanmu”.</p>
+          <p>Setiap tangkai dipilih segar, dirangkai dengan tangan, dan dikirim dengan kartu tulisan tangan — karena
+            detail kecil membuat cerita terasa nyata.</p>
+          <div class="stats">
+            <div><b>10rb+</b><span>Cerita terkirim</span></div>
+            <div><b>48</b><span>Jenis bunga segar</span></div>
+            <div><b>4.9</b><span>Rating pelanggan</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand"><span class="brand-icon">✿</span><span>Bunga Cerita</span></div>
+          <p style="max-width:320px">Florist premium yang membantu kamu mengirim perasaan melalui rangkaian bunga yang
+            personal, segar, dan penuh cerita.</p>
+        </div>
+        <div>
+          <h4>Katalog</h4>
+          <ul>
+            <li><a href="#koleksi">Buket Terbaru</a></li>
+            <li><a href="#momen">Momen</a></li>
+            <li><a href="#asisten">Asisten AI</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Layanan</h4>
+          <ul>
+            <li><a href="#">Same-day Delivery</a></li>
+            <li><a href="#">Kartu Ucapan</a></li>
+            <li><a href="#">Custom Bouquet</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Kontak</h4>
+          <ul>
+            <li><a href="#">WhatsApp</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright"><span>© 2026 Bunga Cerita. Dibuat dengan cinta.</span><span>Jakarta · Indonesia</span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="launcher" id="launcher">✨ <span>Asisten AI</span></button>
+  <aside class="chat" id="chat">
+    <div class="chat-header">
+      <div class="chat-title"><span class="circle-icon">✿</span>
+        <div><b>Asisten Bunga Cerita</b>
+          <div class="status">● Online · siap membantu</div>
+        </div>
+      </div><button class="close" id="closeChat">×</button>
+    </div>
+    <div class="messages" id="messages">
+      <div class="bubble bot">Halo! Aku Asisten Bunga Cerita. Ceritakan untuk siapa dan momen apa, nanti aku bantu
+        carikan buket yang pas. 🌿</div>
+      <div class="starters"><button class="starter" data-prompt="Bunga untuk ulang tahun ibu">Bunga untuk ulang tahun
+          ibu</button><button class="starter" data-prompt="Buket romantis untuk anniversary">Buket romantis untuk
+          anniversary</button><button class="starter" data-prompt="Ucapan selamat wisuda">Ucapan selamat wisuda</button>
+      </div>
+    </div>
+    <form class="chat-form" id="chatForm">
+      <div class="input-wrap"><input id="chatInput" placeholder="Tulis pesanmu di sini..." autocomplete="off">
+        <button class="send" aria-label="Kirim" type="submit">➤</button>
+      </div>
+      <p class="note">Demo HTML statis · respons disimpan di LocalStorage</p>
+    </form>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
